@@ -1,0 +1,18 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Install & Dev
+    init: |
+      corepack enable
+      corepack prepare pnpm@9.7.0 --activate
+      cd apps/web
+      pnpm install
+    command: |
+      cd apps/web
+      pnpm dev --host
+
+ports:
+  - port: 5173
+    onOpen: open-preview
+    visibility: public
